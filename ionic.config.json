@@ -1,0 +1,7 @@
+{
+  "name": "meghaHealthCareWebsite",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

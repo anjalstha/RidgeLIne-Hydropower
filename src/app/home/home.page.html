@@ -1,0 +1,412 @@
+<ion-header *ngIf="!this.stickytoolbar" class="logo-nav-container-sticky">
+  <ion-toolbar>
+    <ion-title>
+      <img src="assets/icon/Logo.png" style="height: 60px" />
+    </ion-title>
+    <ion-buttons slot="end" class="nav-buttons">
+      <ion-button *ngIf="collapse" (click)="toggleDropdown()">
+        <ion-icon name="reorder-four-outline"></ion-icon>
+      </ion-button>
+
+      <div *ngIf="" class="dropdown-menu" [class.expanded]="showDropdown">
+        <ion-button routerLink="/" href="#">Home</ion-button>
+        <ion-button routerLink="/projects" href="#">Projects</ion-button>
+        <ion-button routerLink="/news" href="#">News</ion-button>
+        <ion-button routerLink="/team" href="#">Team</ion-button>
+        <ion-button routerLink="/contact" href="#">Contact Us</ion-button>
+      </div>
+
+      <ng-container *ngIf="!collapse">
+        <ion-button style="--color: black" routerLink="/" href="#"
+          >Home</ion-button
+        >
+        <ion-button routerLink="/projects" href="#">Projects</ion-button>
+        <ion-button routerLink="/news" href="#">News</ion-button>
+        <ion-button routerLink="/team" href="#">Team</ion-button>
+        <ion-button routerLink="/contact" href="#">Contact Us</ion-button>
+      </ng-container>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content #content>
+  <div>
+    <div
+      *ngIf="collapse && showDropdown"
+      class="dropdown-menu"
+      [class.expanded]="showDropdown"
+    >
+      <ion-button routerLink="/" href="#">Home</ion-button>
+      <ion-button routerLink="/projects" href="#">Projects</ion-button>
+      <ion-button routerLink="/news" href="#">News</ion-button>
+      <ion-button routerLink="/team" href="#">Team</ion-button>
+      <ion-button routerLink="/contact" href="#">Contact Us</ion-button>
+    </div>
+  </div>
+
+  <div *ngIf="this.stickytoolbar" class="logo-nav-container">
+    <img src="assets/icon/Logo.png" class="logo-image" />
+
+    <ion-buttons slot="end" class="nav-buttons">
+      <ion-button *ngIf="collapse" (click)="toggleDropdown()">
+        <ion-icon name="reorder-four-outline"></ion-icon>
+      </ion-button>
+
+      <ng-container *ngIf="!collapse">
+        <ion-button class="selected-page" routerLink="/" href="#"
+          >Home</ion-button
+        >
+        <ion-button routerLink="/projects" href="#">Projects</ion-button>
+        <ion-button routerLink="/news" href="#">News</ion-button>
+        <ion-button routerLink="/team" href="#">Team</ion-button>
+        <ion-button routerLink="/contact" href="#">Contact Us</ion-button>
+      </ng-container>
+    </ion-buttons>
+  </div>
+
+  <div class="container">
+    <div class="mid-section">
+      <div class="image-slider">
+        <div
+          class="slider-wrapper"
+          (mousedown)="onTouchStart($event)"
+          (mousemove)="onTouchMove($event)"
+          (mouseup)="onTouchEnd()"
+          (mouseleave)="onTouchEnd()"
+          (touchstart)="onTouchStart($event)"
+          (touchmove)="onTouchMove($event)"
+          (touchend)="onTouchEnd()"
+        >
+          <div class="slide" *ngFor="let item of images; let i = index">
+            <img
+              draggable="false"
+              class="no-interaction"
+              [src]="item.src"
+              [alt]="item.alt"
+            />
+            <div class="text">
+              <h2 class="no-select">
+                <b
+                  >Harnessing The<br />
+                  Potential Of Water</b
+                >
+              </h2>
+
+              <p class="no-select">
+                Join us in building a sutainable future<br />
+                with renewable energy solutions.
+              </p>
+            </div>
+            <button class="image-slider-button" (click)="navigateTo(item.link)">
+              {{ item.name }}
+            </button>
+          </div>
+        </div>
+
+        <!-- <div class="slider-controls">
+          <button (click)="prevSlide()">&#10094;</button>
+          <button (click)="nextSlide()">&#10095;</button>
+        </div> -->
+      </div>
+    </div>
+  </div>
+
+  <div class="about-the-company">
+    <h2>About the company</h2>
+
+    <div class="mountain-image column">
+      <div class="vision">
+        <img
+          src="assets/images/mountain.jpg"
+          class="slide-down"
+          #animatedImage
+          alt="Vision Image"
+        />
+      </div>
+      <div class="mission">
+        <p>
+          Ridge Line Energy Ltd. is a renewable energy company registered at the
+          office of the company registrar, government of Nepal. The company is
+          led by a by group of young and competent board members supported by a
+          professional technical and managerial projects members to design,
+          construct and operate hydropower projects.
+          <br />
+          <br />
+          Ridge Line Energy (RLE) Limited was established in 2074 BS with an
+          objective to work on energy sector in Nepal. Currently, RLE is
+          developing Super Chepe Hydropower Project (SCHP) as its flagship
+          hydropower project with installed capacity of 9.05 MW and is also a
+          major investor of Dudhp...
+
+          <ion-text
+            (click)="goToAboutUsPage()"
+            style="display: flex; align-items: center; cursor: pointer"
+            color="primary"
+          >
+            <h4>READ MORE&nbsp;&nbsp;</h4>
+            <ion-icon
+              style="padding-top: 4px"
+              name="arrow-forward-outline"
+            ></ion-icon>
+          </ion-text>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="about-the-company">
+    <h2>Projects</h2>
+
+    <div class="mountain-image column-reverse">
+      <div class="mission">
+        <h4 style="text-align: start; color: blue">Featured Project</h4>
+        <br />
+        <h3 style="text-align: start; color: black">
+          Super Chepe Hydropower Project
+        </h3>
+        <br />
+
+        <p>
+          The Super Chepe Hydropower (SCHP) Project is a run-of-the-river type
+          hydropower project based on Chepe River in Ajirkot Rural Municipality,
+          Gorkha district of Nepal. The installed capacity of the project is
+          9.05 MW and annual average energy is 54.75 GWh. The project is being
+          developed by Ridge Line Energy Ltd. and financed by Rastriya Banijya
+          Bank Ltd. with 70:30 loan:equity ratio.
+
+          <ion-text
+            (click)="goToProject('1')"
+            style="display: flex; align-items: center; cursor: pointer"
+            color="primary"
+          >
+            <h4>READ MORE&nbsp;&nbsp;</h4>
+            <ion-icon
+              style="padding-top: 4px"
+              name="arrow-forward-outline"
+            ></ion-icon>
+          </ion-text>
+        </p>
+      </div>
+      <div class="vision">
+        <img
+          src="assets/images/superchepe.jpg"
+          class="slide-down"
+          #animatedImage
+          alt="Vision Image"
+        />
+      </div>
+    </div>
+
+    <div class="mountain-image column">
+      <div class="vision">
+        <img
+          src="assets/images/dudhpokhari.jpg"
+          class="slide-down"
+          #animatedImage
+          alt="Vision Image"
+        />
+      </div>
+
+      <div class="mission">
+        <h4 style="text-align: start; color: blue">Featured Project</h4>
+        <br />
+        <h3 style="text-align: start; color: black">
+          Dudhpokhari Chepe Hydropower
+        </h3>
+        <br />
+
+        <p>
+          Ridge Line Energy Ltd. is a major investor of Dudhpokhari Chepe
+          Hydropower (DPCH) project. DPCH is a run-of-river type hydropower
+          project with installed capacity of 8.8 MW. It is being developed by
+          Dudhapokhari Chepe Hydropower Ltd. in Chepe Khola of Ajirkot
+          Gaupalika, Gorkha District. It has estimated annual energy of
+          56.19GWh.
+          <ion-text
+            (click)="goToProject('2')"
+            style="display: flex; align-items: center; cursor: pointer"
+            color="primary"
+          >
+            <h4>READ MORE&nbsp;&nbsp;</h4>
+            <ion-icon
+              style="padding-top: 4px"
+              name="arrow-forward-outline"
+            ></ion-icon>
+          </ion-text>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="about-the-company" style="width: 90%">
+    <div>
+      <h2>Team</h2>
+
+      <ion-text
+        (click)="goToTeamPage()"
+        style="
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+          justify-content: right;
+        "
+        color="primary"
+      >
+        <h4>All Members&nbsp;&nbsp;</h4>
+        <ion-icon
+          style="padding-top: 4px"
+          name="arrow-forward-outline"
+        ></ion-icon>
+      </ion-text>
+    </div>
+
+    <div class="projects-container">
+      <div class="projects-member">
+        <img src="assets/images/employee.png" class="slide-down projectsimage" />
+        <p style="font-size: 20px">
+          <b style="font-size: 20px">Dr. Basant Giri</b><br />
+          Chairperson
+        </p>
+      </div>
+      <div class="projects-member">
+        <img src="assets/images/employee.png" class="slide-down projectsimage" />
+        <p style="font-size: 20px">
+          <b style="font-size: 20px">Dr. Basant Giri</b><br />
+          Chairperson
+        </p>
+      </div>
+      <div class="projects-member">
+        <img src="assets/images/employee.png" class="slide-down projectsimage" />
+        <p style="font-size: 20px">
+          <b style="font-size: 20px">Dr. Basant Giri</b><br />
+          Chairperson
+        </p>
+      </div>
+      <div class="projects-member">
+        <img src="assets/images/employee.png" class="slide-down projectsimage" />
+        <p style="font-size: 20px">
+          <b style="font-size: 20px">Dr. Basant Giri</b><br />
+          Chairperson
+        </p>
+      </div>
+      <div class="projects-member">
+        <img src="assets/images/employee.png" class="slide-down projectsimage" />
+        <p style="font-size: 20px">
+          <b style="font-size: 20px">Dr. Basant Giri</b><br />
+          Chairperson
+        </p>
+      </div>
+      <div class="projects-member">
+        <img src="assets/images/employee.png" class="slide-down projectsimage" />
+        <p style="font-size: 20px">
+          <b style="font-size: 20px">Dr. Basant Giri</b><br />
+          Chairperson
+        </p>
+      </div>
+      <div class="projects-member">
+        <img src="assets/images/employee.png" class="slide-down projectsimage" />
+        <p style="font-size: 20px">
+          <b style="font-size: 20px">Dr. Basant Giri</b><br />
+          Chairperson
+        </p>
+      </div>
+    </div>
+
+    <div class="about-the-company" style="width: 90%">
+      <div>
+        <h2>News</h2>
+
+        <ion-text
+          (click)="goToNewsPage()"
+          style="
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            justify-content: right;
+          "
+          color="primary"
+        >
+          <h4>All News&nbsp;&nbsp;</h4>
+          <ion-icon
+            style="padding-top: 4px"
+            name="arrow-forward-outline"
+          ></ion-icon>
+        </ion-text>
+      </div>
+    </div>
+  </div>
+
+
+  <ion-footer>
+    <ion-toolbar class="footer-toolbar">
+      <div class="footer-content">
+        <div class="footer-section footer-left">
+          <img
+            style="max-width: 160px; margin-bottom: 30px;
+"
+            src="assets/icon/Logo.png"
+            alt="Company Logo"
+            class="footer-logo"
+          />
+
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.9271601405408!2d85.31099447546671!3d27.6886460761933!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19b9ca7b3ea5%3A0xa2cc061c8684e955!2sRidge%20Line%20Energy%20Co.!5e0!3m2!1sen!2snp!4v1735723680315!5m2!1sen!2snp"
+            width="80%"
+            height="100%"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+
+        <div class="footer-section footer-center" style="text-align: left">
+          <h2><b>Reach out </b></h2>
+          <p>
+            <ion-icon name="location" class="location-icon"></ion-icon>
+            Kupondole, Lalitpur, Nepal
+          </p>
+
+          <p>
+            <ion-icon name="call"></ion-icon>
+            01-5900114
+          </p>
+          <p>
+            <ion-icon name="mail"></ion-icon>
+            <a href="info@ridgeline.com.np">info&#64;ridgeline.com.np</a>
+          </p>
+        </div>
+
+        <div class="footer-section footer-right">
+          <h2><b>Quick Links</b></h2>
+
+          <p>
+            <a routerLink="/projects" href="#">Projects</a>
+          </p>
+          <p>
+            <a routerLink="/news" href="#">News</a>
+          </p>
+          <p>
+            <a routerLink="/about-us" href="#">About us</a>
+          </p>
+          <p>
+            <a routerLink="/contact" href="#">Contact us</a>
+          </p>
+        </div>
+      </div>
+
+
+    </ion-toolbar>
+  </ion-footer>
+
+  <div class="footer-section footer-bottom">
+    <p style="margin-left: 40px;">Ridge Line Energy Ltd. 2025 | All Right Reserved
+    </p>
+  </div>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="scrollToTop()">
+      <ion-icon name="arrow-up"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

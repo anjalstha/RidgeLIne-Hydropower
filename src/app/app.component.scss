@@ -1,0 +1,14 @@
+ion-footer {
+  ion-toolbar {
+    background-color: #2b2b2b;
+    color: white;
+
+    .footer-content {
+      text-align: center;
+      p {
+        margin: 0;
+        font-size: 0.9em;
+      }
+    }
+  }
+}

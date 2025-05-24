@@ -1,0 +1,213 @@
+<ion-header *ngIf="!this.stickytoolbar" class="logo-nav-container-sticky">
+  <ion-toolbar>
+    <ion-title>
+      <img src="assets/icon/Logo.png" style="height: 60px" />
+    </ion-title>
+    <ion-buttons slot="end" class="nav-buttons">
+      <ion-button *ngIf="collapse" (click)="toggleDropdown()">
+        <ion-icon name="reorder-four-outline"></ion-icon>
+      </ion-button>
+
+      <div *ngIf="" class="dropdown-menu" [class.expanded]="showDropdown">
+        <ion-button routerLink="/" href="#">Home</ion-button>
+        <ion-button routerLink="/projects" href="#">Projects</ion-button>
+        <ion-button routerLink="/news" href="#">News</ion-button>
+        <ion-button routerLink="/team" href="#">Team</ion-button>
+        <ion-button routerLink="/contact" href="#">Contact Us</ion-button>
+      </div>
+
+      <ng-container *ngIf="!collapse">
+        <ion-button style="--color: black" routerLink="/" href="#"
+          >Home</ion-button
+        >
+        <ion-button routerLink="/projects" href="#">Projects</ion-button>
+        <ion-button routerLink="/news" href="#">News</ion-button>
+        <ion-button routerLink="/team" href="#">Team</ion-button>
+        <ion-button routerLink="/contact" href="#">Contact Us</ion-button>
+      </ng-container>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content #content>
+  <div>
+    <div
+      *ngIf="collapse && showDropdown"
+      class="dropdown-menu"
+      [class.expanded]="showDropdown"
+    >
+      <ion-button routerLink="/" href="#">Home</ion-button>
+      <ion-button routerLink="/projects" href="#">Projects</ion-button>
+      <ion-button routerLink="/news" href="#">News</ion-button>
+      <ion-button routerLink="/team" href="#">Team</ion-button>
+      <ion-button routerLink="/contact" href="#">Contact Us</ion-button>
+    </div>
+  </div>
+
+  <div *ngIf="this.stickytoolbar" class="logo-nav-container">
+    <img src="assets/icon/Logo.png" class="logo-image" />
+
+    <ion-buttons slot="end" class="nav-buttons">
+      <ion-button *ngIf="collapse" (click)="toggleDropdown()">
+        <ion-icon name="reorder-four-outline"></ion-icon>
+      </ion-button>
+
+      <ng-container *ngIf="!collapse">
+        <ion-button routerLink="/" href="#">Home</ion-button>
+        <ion-button routerLink="/projects" href="#">Projects</ion-button>
+        <ion-button routerLink="/news" href="#">News</ion-button>
+        <ion-button routerLink="/team" href="#">Team</ion-button>
+        <ion-button routerLink="/contact" href="#">Contact Us</ion-button>
+      </ng-container>
+    </ion-buttons>
+  </div>
+
+  <div class="container">
+    <div class="mid-section" style="width: 100%">
+      <div class="image-slider">
+        <div class="slide">
+
+          <img *ngIf="extractedUrl === '1'"
+            draggable="false"
+            class="no-interaction"
+            src="assets/images/superchepe.jpg"
+            style="max-height: 500px"
+          />
+
+          <img *ngIf="extractedUrl === '2'"
+          draggable="false"
+          class="no-interaction"
+          src="assets/images/dudhpokhari.jpg"
+          style="max-height: 500px"
+        />
+
+          <div class="text">
+            <h2 class="no-select">
+              <b>Project</b>
+            </h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="about-the-company">
+    <h2 *ngIf="extractedUrl === '1'">Super Chepe Hydropower Project</h2>
+
+    <h2 *ngIf="extractedUrl === '2'">Dudhpokhari Chepe Hydropower</h2>
+
+    <div class="mountain-image column">
+      <div class="mission" *ngIf="extractedUrl === '1'">
+        <p>
+          The Super Chepe Hydropower (SCHP) Project is a run-of-the-river type hydropower project based on Chepe River in Ajirkot Rural Municipality, Gorkha district of Nepal. The installed capacity of the project is 9.05 MW and annual average energy is 54.75 GWh. The project is being developed by Ridge Line Energy Ltd. and financed by Rastriya Banijya Bank Ltd. with 70:30 loan:equity ratio.
+          <br />
+          <br />
+          Power Purchase Agreement (PPA) with the Nepal Electricity Authority (NEA) was completed in 2018. SCHP has weir crest level at 1848.4 m above sea level and powerhouse level at about 1290.60 m above sea level. It has 559.4m gross head, 49.23Km2 catchment area, 3.95m3/sec average annual discharge. The project is expected to be commissioned by July 2023.
+        </p>
+        <br />
+        <br />
+        <p>
+          Please watch this video to know more about the project.
+</p>
+<br />
+
+<div class="video-container">
+  <iframe
+    src="https://www.youtube.com/embed/Q4czbSeWjCM"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen>
+  </iframe>
+</div>
+      </div>
+
+      <div class="mission" *ngIf="extractedUrl === '2'">
+        <p>
+          Ridge Line Energy Ltd. is a major investor of Dudhpokhari Chepe Hydropower (DPCH) project. DPCH is a run-of-river type hydropower project with installed capacity of 8.8 MW. It is being developed by Dudhapokhari Chepe Hydropower Ltd. in Chepe Khola of Ajirkot Gaupalika, Gorkha District. It has estimated annual energy of 56.19GWh.
+</p>
+
+
+      </div>
+
+      <br />
+      <br />
+
+    </div>
+</div>
+
+
+<ion-footer>
+  <ion-toolbar class="footer-toolbar">
+    <div class="footer-content">
+      <div class="footer-section footer-left">
+        <img
+          style="max-width: 160px; margin-bottom: 30px;
+"
+          src="assets/icon/Logo.png"
+          alt="Company Logo"
+          class="footer-logo"
+        />
+
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.9271601405408!2d85.31099447546671!3d27.6886460761933!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19b9ca7b3ea5%3A0xa2cc061c8684e955!2sRidge%20Line%20Energy%20Co.!5e0!3m2!1sen!2snp!4v1735723680315!5m2!1sen!2snp"
+          width="80%"
+          height="100%"
+          style="border: 0"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+
+      <div class="footer-section footer-center" style="text-align: left">
+        <h2><b>Reach out </b></h2>
+        <p>
+          <ion-icon name="location" class="location-icon"></ion-icon>
+          Kupondole, Lalitpur, Nepal
+        </p>
+
+        <p>
+          <ion-icon name="call"></ion-icon>
+          01-5900114
+        </p>
+        <p>
+          <ion-icon name="mail"></ion-icon>
+          <a href="info@ridgeline.com.np">info&#64;ridgeline.com.np</a>
+        </p>
+      </div>
+
+      <div class="footer-section footer-right">
+        <h2><b>Quick Links</b></h2>
+
+        <p>
+          <a routerLink="/projects" href="#">Projects</a>
+        </p>
+        <p>
+          <a routerLink="/news" href="#">News</a>
+        </p>
+        <p>
+          <a routerLink="/about-us" href="#">About us</a>
+        </p>
+        <p>
+          <a routerLink="/contact" href="#">Contact us</a>
+        </p>
+      </div>
+    </div>
+
+
+  </ion-toolbar>
+</ion-footer>
+
+  <div class="footer-section footer-bottom">
+    <p style="margin-left: 40px">
+      Ridge Line Energy Ltd. 2025 | All Right Reserved
+    </p>
+  </div>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="scrollToTop()">
+      <ion-icon name="arrow-up"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
